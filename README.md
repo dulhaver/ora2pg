@@ -401,7 +401,7 @@ Usage: ora2pg [-dhpqv --estimate_cost --dump_as_html] [--option value]
                         of greater memory utilisation at the destination.
 ```
 
-See full documentation at https://ora2pg.darold.net/ for more help or see manpage with 'man ora2pg'.
+See full documentation at https://ora2pg.darold.net/ for more help or see manpage with `man ora2pg`.
 
 ora2pg will return 0 on success, 1 on error. It will return 2 when a child process has been interrupted and you've gotten the warning
 message: "WARNING: an error occured during data export. Please check what's happened." Most of the time this is an OOM issue, so first try
