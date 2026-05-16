@@ -1,7 +1,7 @@
-NAME
+# NAME
     Ora2Pg - Oracle to PostgreSQL database schema converter
 
-DESCRIPTION
+### DESCRIPTION
     Ora2Pg is a free tool used to migrate an Oracle database to a PostgreSQL
     compatible schema. It connects to your Oracle database, scans it
     automatically and extracts its structure or data, then generates SQL
@@ -13,7 +13,7 @@ DESCRIPTION
     and doesn't require any Oracle database knowledge other than providing
     the parameters needed to connect to the Oracle database.
 
-FEATURES
+### FEATURES
     Ora2Pg consists of a Perl script (ora2pg) and a Perl module (Ora2Pg.pm).
     The only thing you have to modify is the configuration file ora2pg.conf
     by setting the DSN to the Oracle database and optionally the name of a
@@ -71,7 +71,7 @@ FEATURES
     See http://ora2pg.darold.net/report.html for an HTML sample of an Oracle
     database migration report.
 
-INSTALLATION
+## INSTALLATION
     All Perl modules can always be found at CPAN (http://search.cpan.org/).
     Just type the full name of the module (ex: DBD::Oracle) into the search
     input box, it will bring you to the page for download.
@@ -128,7 +128,7 @@ INSTALLATION
 
     otherwise, use the packages provided by your distribution.
 
-  Optional
+### Optional
     By default, Ora2Pg dumps exports to flat files. To load them into your
     PostgreSQL database, you need the PostgreSQL client (psql). If you don't
     have it on the host running Ora2Pg, you can always transfer these files
@@ -147,7 +147,7 @@ INSTALLATION
 
     otherwise, use the packages provided by your distribution.
 
-  Instruction for SQL Server
+### Instruction for SQL Server
     For SQL Server, you need to install the unixodbc package and the Perl
     DBD::ODBC driver:
 
@@ -176,7 +176,7 @@ INSTALLATION
     See ORACLE_DSN to learn how to use the driver to connect to your MSSQL
     database.
 
-  Installing Ora2Pg
+### Installing Ora2Pg
     Like any other Perl Module, Ora2Pg can be installed with the following
     commands:
 
@@ -209,13 +209,13 @@ INSTALLATION
             export PERL5LIB=<your_install_dir>
             ora2pg -c config/ora2pg.conf -t TABLE -b outdir/
 
-  Packaging
+### Packaging
     If you want to build binary packages for your preferred Linux
     distribution, take a look at the packaging/ directory of the source
     tarball. It contains everything needed to build RPM, Slackware and
     Debian packages. See the README file in that directory.
 
-  Installing DBD::Oracle
+### Installing DBD::Oracle
     Ora2Pg needs the Perl module DBD::Oracle for connectivity to an Oracle
     database from Perl DBI. You can get DBD::Oracle from CPAN, a Perl module
     repository.
@@ -251,7 +251,7 @@ INSTALLATION
     you have installed the files. For example:
     /opt/oracle/instantclient_12_2/
 
-CONFIGURATION
+## CONFIGURATION
     Configuring Ora2Pg can be as simple as choosing the Oracle database to
     export and choosing the export type. This can be done in a minute.
 
@@ -284,7 +284,7 @@ CONFIGURATION
     Values set in command line options will override values from the
     configuration file.
 
-  Ora2Pg usage
+## Ora2Pg usage
     First of all be sure that libraries and binaries paths include the
     Oracle Instant Client installation:
 
@@ -441,7 +441,7 @@ CONFIGURATION
             DBMS_STATS.GATHER_DICTIONARY_STATS
             END;
 
-  Generate a migration template
+### Generate a migration template
     The two options --project_base and --init_project indicate to ora2pg
     that it should create a project template with a work tree, a
     configuration file and a script to export all objects from the Oracle
@@ -506,7 +506,7 @@ CONFIGURATION
     kind of migration is not something common for you, it's recommended that
     you use those scripts.
 
-  Oracle database connection
+### Oracle database connection
     There are 5 configuration directives to control the access to the Oracle
     database.
 
@@ -600,7 +600,7 @@ CONFIGURATION
         reading objects or to set some session parameters. This directive
         can be used multiple times.
 
-  Data encryption with Oracle server
+### Data encryption with Oracle server
     If your Oracle Client config file already includes the encryption
     method, then DBD::Oracle uses those settings to encrypt the connection
     while extracting data. For example, if you have configured the Oracle
@@ -624,7 +624,7 @@ CONFIGURATION
     Full details at
     https://kb.berkeley.edu/jivekb/entry.jspa?externalID=1005
 
-  Testing connection
+### Testing connection
     Once you have set the Oracle database DSN, you can execute ora2pg to see
     if it works:
 
@@ -634,7 +634,7 @@ CONFIGURATION
     test your installation as most problems occur here. The other
     configuration steps are more technical.
 
-  Troubleshooting
+### Troubleshooting
     If the output.sql file hasn't exported anything other than the
     PostgreSQL transaction header and footer, there are two possible
     reasons: 1) The perl script ora2pg dumps an ORA-XXX error, which means
@@ -3567,7 +3567,7 @@ CONFIGURATION
     the option --blob_to_lo. To filter the rows you can use the WHERE
     configuration directive in ora2pg.conf.
 
-SUPPORT
+## SUPPORT
   Author / Maintainer
     Gilles Darold <gilles AT darold DOT net>
 
@@ -3582,7 +3582,7 @@ SUPPORT
     Any contribution to build a better tool is welcome. Just send me your
     ideas, features requests or patches and they will be applied.
 
-LICENSE
+## LICENSE
     Copyright (c) 2000-2026 Gilles Darold - All rights reserved.
 
             This program is free software: you can redistribute it and/or modify
@@ -3598,7 +3598,7 @@ LICENSE
             You should have received a copy of the GNU General Public License
             along with this program.  If not, see < http://www.gnu.org/licenses/ >.
 
-ACKNOWLEDGEMENTS
+## ACKNOWLEDGEMENTS
     Many thanks to all the great contributors. See changelog for all
     acknowledgments.
 
