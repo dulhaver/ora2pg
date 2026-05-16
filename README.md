@@ -100,12 +100,12 @@ module.
 
 If your distribution doesn't include these Perl modules, you can install
 them using CPAN:
-
-        perl -MCPAN -e 'install DBD::Oracle'
-        perl -MCPAN -e 'install DBD::MySQL'
-        perl -MCPAN -e 'install DBD::ODBC'
-        perl -MCPAN -e 'install Time::HiRes'
-
+```
+perl -MCPAN -e 'install DBD::Oracle'
+perl -MCPAN -e 'install DBD::MySQL'
+perl -MCPAN -e 'install DBD::ODBC'
+perl -MCPAN -e 'install Time::HiRes'
+```
 otherwise, use the packages provided by your distribution.
 
 ### Optional
@@ -121,148 +121,130 @@ bzip2 compression, the program bzip2 must be available in your PATH.
 
 If your distribution doesn't include these Perl modules, you can install
 them using CPAN:
-
-        perl -MCPAN -e 'install DBD::Pg'
-        perl -MCPAN -e 'install Compress::Zlib'
-
+```
+perl -MCPAN -e 'install DBD::Pg'
+perl -MCPAN -e 'install Compress::Zlib'
+```
 otherwise, use the packages provided by your distribution.
 
 ### Instruction for SQL Server
 For SQL Server, you need to install the unixodbc package and the Perl
 DBD::ODBC driver:
 
-        sudo apt install unixodbc
-        sudo apt install libdbd-odbc-perl
+```
+sudo apt install unixodbc
+sudo apt install libdbd-odbc-perl
+```
 
 or
 
-        sudo yum install unixodbc
-        sudo yum install perl-DBD-ODBC
-        sudo yum install perl-DBD-Pg
+```
+sudo yum install unixodbc
+sudo yum install perl-DBD-ODBC
+sudo yum install perl-DBD-Pg
+```
 
-Then install the Microsoft ODBC Driver for SQL Server. Follow the
-instructions for to your operating system from here:
+Then install the Microsoft ODBC Driver for SQL Server. Follow the instructions for to your operating system from [here](https://docs.microsoft.com/fr-fr/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver16)
 
-        https://docs.microsoft.com/fr-fr/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver16
+Once done, set the following in the /etc/odbcinst.ini file by adjusting the SQL Server ODBC driver version:
 
-Once done, set the following in the /etc/odbcinst.ini file by adjusting
-the SQL Server ODBC driver version:
+```
+[msodbcsql18]
+Description=Microsoft ODBC Driver 18 for SQL Server
+Driver=/opt/microsoft/msodbcsql18/lib64/libmsodbcsql-18.0.so.1.1
+UsageCount=1
+```
 
-        [msodbcsql18]
-        Description=Microsoft ODBC Driver 18 for SQL Server
-        Driver=/opt/microsoft/msodbcsql18/lib64/libmsodbcsql-18.0.so.1.1
-        UsageCount=1
-
-See ORACLE_DSN to learn how to use the driver to connect to your MSSQL
-database.
+See ORACLE_DSN to learn how to use the driver to connect to your MSSQL database.
 
 ### Installing Ora2Pg
-Like any other Perl Module, Ora2Pg can be installed with the following
-commands:
-
-        tar xjf ora2pg-x.x.tar.bz2
-        cd ora2pg-x.x/
-        perl Makefile.PL
-        make && make install
-
-This will install Ora2Pg.pm into your site Perl repository, ora2pg into
-/usr/local/bin/ and ora2pg.conf into /etc/ora2pg/.
+Like any other Perl Module, Ora2Pg can be installed with the following commands:
+```
+tar xjf ora2pg-x.x.tar.bz2
+cd ora2pg-x.x/
+perl Makefile.PL
+make && make install
+```
+This will install Ora2Pg.pm into your site Perl repository, ora2pg into `/usr/local/bin/` and ora2pg.conf into `/etc/ora2pg/`.
 
 On Windows(TM), you may use instead:
 
-        perl Makefile.PL
-        gmake && gmake install
+```
+perl Makefile.PL
+gmake && gmake install
+```
 
-This will install scripts and libraries into your Perl site installation
-directory and the ora2pg.conf file as well as all documentation files
-into C:\ora2pg\
+This will install scripts and libraries into your Perl site installation directory and the ora2pg.conf file as well as all documentation files into `C:\ora2pg\`
 
-To install ora2pg in a different directory than the default one, simply
-use this command:
+To install ora2pg in a different directory than the default one, simply use this command:
 
-        perl Makefile.PL PREFIX=<your_install_dir>
-        make && make install
+```
+perl Makefile.PL PREFIX=<your_install_dir>
+make && make install
+```
 
-then set PERL5LIB to the path to your installation directory before
-using Ora2Pg.
+then set PERL5LIB to the path to your installation directory before using Ora2Pg.
 
-        export PERL5LIB=<your_install_dir>
-        ora2pg -c config/ora2pg.conf -t TABLE -b outdir/
+```
+export PERL5LIB=<your_install_dir>
+ora2pg -c config/ora2pg.conf -t TABLE -b outdir/
+```
 
 ### Packaging
-If you want to build binary packages for your preferred Linux
-distribution, take a look at the packaging/ directory of the source
-tarball. It contains everything needed to build RPM, Slackware and
-Debian packages. See the README file in that directory.
+If you want to build binary packages for your preferred Linux distribution, take a look at the packaging/ directory of the source
+tarball. It contains everything needed to build RPM, Slackware and Debian packages. See the README file in that directory.
 
 ### Installing DBD::Oracle
-Ora2Pg needs the Perl module DBD::Oracle for connectivity to an Oracle
-database from Perl DBI. You can get DBD::Oracle from CPAN, a Perl module
-repository.
+Ora2Pg needs the Perl module DBD::Oracle for connectivity to an Oracle database from Perl DBI. You can get DBD::Oracle from CPAN, a Perl module repository.
 
-After setting ORACLE_HOME and LD_LIBRARY_PATH environment variables as
-root user, install DBD::Oracle. Proceed as follows:
-
-        export LD_LIBRARY_PATH=/usr/lib/oracle/12.2/client64/lib
-        export ORACLE_HOME=/usr/lib/oracle/12.2/client64
-        perl -MCPAN -e 'install DBD::Oracle'
-
+After setting ORACLE_HOME and LD_LIBRARY_PATH environment variables as root user, install DBD::Oracle. Proceed as follows:
+```
+export LD_LIBRARY_PATH=/usr/lib/oracle/12.2/client64/lib
+export ORACLE_HOME=/usr/lib/oracle/12.2/client64
+perl -MCPAN -e 'install DBD::Oracle'
+```
 If you are running for the first time, it will ask many questions; you
 can keep defaults by pressing ENTER key, but you need to provide one
 appropriate mirror site for CPAN to download the modules. Install
 through CPAN manually if the above doesn't work:
-
-        #perl -MCPAN -e shell
-        cpan> get DBD::Oracle
-        cpan> quit
-        cd ~/.cpan/build/DBD-Oracle*
-        export LD_LIBRARY_PATH=/usr/lib/oracle/11.2/client64/lib
-        export ORACLE_HOME=/usr/lib/oracle/11.2/client64
-        perl Makefile.PL
-        make
-        make install
-
+```
+#perl -MCPAN -e shell
+cpan> get DBD::Oracle
+cpan> quit
+cd ~/.cpan/build/DBD-Oracle*
+export LD_LIBRARY_PATH=/usr/lib/oracle/11.2/client64/lib
+export ORACLE_HOME=/usr/lib/oracle/11.2/client64
+perl Makefile.PL
+make
+make install
+```
 Installing DBD::Oracle requires that the three Oracle packages:
-instant-client, SDK and SQLplus are installed as well as the libaio1
-library.
+instant-client, SDK and SQLplus are installed as well as the libaio1 library.
 
-If you are using Instant Client from ZIP archives, the LD_LIBRARY_PATH
-and ORACLE_HOME will be the same and must be set to the directory where
-you have installed the files. For example:
-/opt/oracle/instantclient_12_2/
+If you are using Instant Client from ZIP archives, the LD_LIBRARY_PATH and ORACLE_HOME will be the same and must be set to the directory where you have installed the files. For example: `/opt/oracle/instantclient_12_2/`
 
 ## CONFIGURATION
-Configuring Ora2Pg can be as simple as choosing the Oracle database to
-export and choosing the export type. This can be done in a minute.
+Configuring Ora2Pg can be as simple as choosing the Oracle database to export and choosing the export type.
+This can be done in a minute.
 
 By reading this documentation you will also be able to:
+```
+- Select only certain tables and/or columns for export.
+- Rename some tables and/or columns during export.
+- Select data to export following a WHERE clause per table.
+- Delay database constraints during data loading.
+- Compress exported data to save disk space.
+- and much more.
+```
+The Oracle database migration is fully controlled through a single configuration file named ora2pg.conf. The format of this file consists
+of a directive name in upper case followed by a tab character and a value. Comments are lines beginning with a #.
 
-        - Select only certain tables and/or columns for export.
-        - Rename some tables and/or columns during export.
-        - Select data to export following a WHERE clause per table.
-        - Delay database constraints during data loading.
-        - Compress exported data to save disk space.
-        - and much more.
+There's no specific order to place the configuration directives, they are set at the time they are read in the configuration file.
 
-The Oracle database migration is fully controlled through a single
-configuration file named ora2pg.conf. The format of this file consists
-of a directive name in upper case followed by a tab character and a
-value. Comments are lines beginning with a #.
+For configuration directives that just take a single value, you can use them multiple times in the configuration file but only the last
+occurrence found in the file will be used. For configuration directives that allow a list of values, you can use them multiple times, the values will be appended to the list. If you use the IMPORT directive to load a custom configuration file, directives defined in this file will be stored from the place the IMPORT directive is found, so it is better to put it at the end of the configuration file.
 
-There's no specific order to place the configuration directives, they
-are set at the time they are read in the configuration file.
-
-For configuration directives that just take a single value, you can use
-them multiple times in the configuration file but only the last
-occurrence found in the file will be used. For configuration directives
-that allow a list of values, you can use them multiple times, the values
-will be appended to the list. If you use the IMPORT directive to load a
-custom configuration file, directives defined in this file will be
-stored from the place the IMPORT directive is found, so it is better to
-put it at the end of the configuration file.
-
-Values set in command line options will override values from the
-configuration file.
+Values set in command line options will override values from the configuration file.
 
 ## Ora2Pg usage
 First of all be sure that libraries and binaries paths include the
