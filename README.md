@@ -289,6 +289,7 @@ Here are all command line parameters available when using ora2pg:
 
 Usage: ora2pg [-dhpqv --estimate_cost --dump_as_html] [--option value]
 
+```
     -a | --allow str  : Comma separated list of objects to allow from export.
                         Can be used with SHOW_COLUMN too.
     -b | --basedir dir: Set the default output directory, where files
@@ -398,20 +399,16 @@ Usage: ora2pg [-dhpqv --estimate_cost --dump_as_html] [--option value]
    --oracle_fdw_prefetch: Set the oracle_fdw prefetch value. Larger values
                         generally result in faster data transfer at the cost
                         of greater memory utilisation at the destination.
+```
 
-See full documentation at https://ora2pg.darold.net/ for more help or
-see manpage with 'man ora2pg'.
+See full documentation at https://ora2pg.darold.net/ for more help or see manpage with 'man ora2pg'.
 
-ora2pg will return 0 on success, 1 on error. It will return 2 when a
-child process has been interrupted and you've gotten the warning
-message: "WARNING: an error occured during data export. Please check
-what's happened." Most of the time this is an OOM issue, so first try
+ora2pg will return 0 on success, 1 on error. It will return 2 when a child process has been interrupted and you've gotten the warning
+message: "WARNING: an error occured during data export. Please check what's happened." Most of the time this is an OOM issue, so first try
 reducing DATA_LIMIT value.
 
-For developers, it is possible to add your own custom option(s) in the
-Perl script ora2pg as any configuration directive from ora2pg.conf can
-be passed in lower case to the new Ora2Pg object instance. See ora2pg
-code on how to add your own option.
+For developers, it is possible to add your own custom option(s) in the Perl script ora2pg as any configuration directive from ora2pg.conf can
+be passed in lower case to the new Ora2Pg object instance. See ora2pg code on how to add your own option.
 
 Note that performance might be improved by updating stats on Oracle:
 
@@ -427,6 +424,7 @@ that it should create a project template with a work tree, a
 configuration file and a script to export all objects from the Oracle
 database. Here is a sample of the command usage:
 
+```
         ora2pg --project_base /app/migration/ --init_project test_project
         Creating project test_project.
         /app/migration/test_project/
@@ -462,34 +460,26 @@ database. Here is a sample of the command usage:
         Generating generic configuration file
         Creating script export_schema.sh to automate all exports.
         Creating script import_all.sh to automate all imports.
+```
 
-It creates a generic config file where you just have to define the
-Oracle database connection and a shell script called export_schema.sh.
-The sources/ directory will contain the Oracle code, the schema/
-directory will contain the code ported to PostgreSQL. The reports/
-directory will contain the HTML and JSON reports with the migration cost
-assessment.
+It creates a generic config file where you just have to define the Oracle database connection and a shell script called export_schema.sh.
+The sources/ directory will contain the Oracle code, the schema/directory will contain the code ported to PostgreSQL. The reports/
+directory will contain the HTML and JSON reports with the migration cost assessment.
 
-If you want to use your own default config file, use the -c option to
-give the path to that file. Rename it with .dist suffix if you want
-ora2pg to apply the generic configuration values; otherwise, the
-configuration file will be copied untouched.
+If you want to use your own default config file, use the -c option to give the path to that file. Rename it with .dist suffix if you want
+ora2pg to apply the generic configuration values; otherwise, the configuration file will be copied untouched.
 
-Once you have set the connection to the Oracle Database you can execute
-the script export_schema.sh that will export all object types from your
-Oracle database and output DDL files into the schema's subdirectories.
-At end of the export it will give you the command to export data later
-when the import of the schema is done and verified.
+Once you have set the connection to the Oracle Database you can execute the script export_schema.sh that will export all object types from your
+Oracle database and output DDL files into the schema's subdirectories. At end of the export it will give you the command to export data later
+when the import of the schema is done and verified. 
 
-You can choose to load the DDL files generated manually or use the
-second script import_all.sh to import those files interactively. If this
-kind of migration is not something common for you, it's recommended that
-you use those scripts.
+You can choose to load the DDL files generated manually or use the second script import_all.sh to import those files interactively. If this
+kind of migration is not something common for you, it's recommended that you use those scripts.
 
 ### Oracle database connection
-There are 5 configuration directives to control the access to the Oracle
-database.
+There are 5 configuration directives to control the access to the Oracle database.
 
+```
 ORACLE_HOME
     Used to set the ORACLE_HOME environment variable for the Oracle
     libraries required by the DBD::Oracle Perl module.
@@ -579,6 +569,7 @@ ORA_INITIAL_COMMAND
     just after the connection. For example to unlock a policy before
     reading objects or to set some session parameters. This directive
     can be used multiple times.
+```
 
 ### Data encryption with Oracle server
 If your Oracle Client config file already includes the encryption
